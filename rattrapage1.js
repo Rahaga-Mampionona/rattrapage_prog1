@@ -1,9 +1,27 @@
-function NegatifPositif(T) {
+export function NegatifPositif(T) {
+    let gauche = 0;
+    let droite = T.length - 1;
 
+    while (gauche < droite) {
 
-let T = [3, -1, 0, 4, -2, 5, -3];
+        
+        while (gauche < droite && T[gauche] <= 0) {
+            gauche++;
+        }
 
-console.log(NegatifPositif(T));
+        while (gauche < droite && T[droite] > 0) {
+            droite--;
+        }
 
+        if (gauche < droite) {
+            const temp = T[gauche];
+            T[gauche] = T[droite];
+            T[droite] = temp;
 
+            gauche++;
+            droite--;
+        }
+    }
+
+    return T;
 }
